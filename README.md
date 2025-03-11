@@ -1,14 +1,56 @@
-Çalışan Memnuniyeti Analizi ile Power BI
-Proje Genel Bakış
-Bu depo, şirketimizdeki çalışan memnuniyetini analiz etmek için kullanılan bir Power BI gösterge tablosunu ve ilişkili veri dosyalarını içermekte. 
-Bu analizin amacı, çalışan memnuniyetini ve ayrılma oranlarını etkileyen temel faktörleri belirlemektir. Bu verilerden elde edilen içgörülerle iş yerimizi iyileştirme ve genel çalışan refahını artırmak hedeflenmektedir.
+Yaş ve Deneyim ile İşten Ayrılma Tahmini
 
-Veri Tanımı
-Bu analizde kullanılan veriler, şirketin çeşitli departmanlarında yapılan iç bir anketten elde edilmiştir. Veri seti, çalışan memnuniyeti ve ayrılma ile ilgili anlamak için önemli olan Yaş, İş Seyahati, İşe Katılım,
-İş Seviyesi, İş Memnuniyeti gibi çeşitli değişkenleri içerir.
+1. Projenin Amacı
 
-Verinin Ana Özellikleri:
-Demografik Bilgi: Çalışanların yaş, cinsiyet ve medeni durumunu içerir.
-İş Bilgisi: Çalışanın iş rolü, departmanı ve organizasyondaki seviyesi hakkında bilgiler.
-Memnuniyet Metrikleri: İş memnuniyeti, iş-yaşam dengesi ve çevre memnuniyeti ölçümleri.
-Kariyer Gelişimi: Şirkette geçirilen yıllar, güncel görevde geçirilen yıllar ve eğitim ile terfi fırsatları hakkında veriler.
+Bu proje, çalışanların yaş, deneyim ve diğer çeşitli faktörlere dayalı olarak işten ayrılma (“Attrition”) tahminini yapmak için oluşturulmuştur.
+*Lojistik Regresyon kullanarak çalışanların ayrılma olasılığı tahmin edilir.
+*ROC Eğrisi ve AUC Skoru ile model performansı değerlendirilir.
+*Boosting Modeli (GBM) ile tahminlerin doğruluğu artırılır.
+*Bu model, şirketlerin personel devir hızını anlaması ve tahmin etmesi için kullanılabilir.
+*Lojistik Büyüleme Modeli ile yaşa göre deneyim tahmini.
+
+2. Kullanılan Yöntemler
+Bu projede şu makine öğrenmesi ve istatistiksel yöntemler kullanılmıştır:
+*Lojistik Regresyon ✨  (Olasılık bazlı tahmin yapar)
+*Confusion Matrix  📊 (Modelin doğruluk oranını değerlendirir)
+*ROC Eğrisi & AUC Skoru  🔢 (Modelin çalışma performansını ölçer)
+*Boosting (GBM) ⚡ (Performansı artırmak için ek model)
+
+3. Gereksinimler ve Kurulum
+library(readxl)
+library(dplyr)
+library(ggplot2)
+library(VIM)
+library(naniar)
+library(mice)
+library(caret)
+library(randomForest)
+library(gbm)
+library(pROC)
+library(gtsummary)
+
+Logistik Büyüme Modeli  Kısmı
+
+1. Projenin Amacı Bu projenin amacı, logistik büyüme modeli kullanarak bir veri kümesine en uygun eğriyi uydurmak ve model parametrelerini belirlemektir. Doğrusal olmayan en küçük kareler yöntemi (nonlinear least squares) kullanılarak en iyi parametre tahminleri yapılmakta ve modelin doğruluğu görselleştirme ile analiz edilmektedir.
+
+2. Gereksinimler ve Kurulum
+install.packages("minpack.lm")
+library(minpack.lm)  # nlsLM için
+library(ggplot2)
+
+
+Logistik Model Fonksiyonu
+
+Logistik büyüme modeli aşağıdaki matematiksel formül
+
+Y= L/1+e^(-k(X-x0)
+
+L: Asimptotik maksimum değer (taşıma kapasitesi),
+
+k: Büyüme hızı,
+
+x0: Eğrinin orta noktasıdır.
+
+
+
+
