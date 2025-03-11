@@ -15,10 +15,10 @@ Bu proje, çalışanların yaş, deneyim ve diğer çeşitli faktörlere dayalı
 
 2. Kullanılan Yöntemler
 Bu projede şu makine öğrenmesi ve istatistiksel yöntemler kullanılmıştır:
-*Lojistik Regresyon  (Olasılık bazlı tahmin yapar)
-*Confusion Matrix (Modelin doğruluk oranını değerlendirir)
-*ROC Eğrisi & AUC Skoru  (Modelin çalışma performansını ölçer)
-*Boosting (GBM) ⚡ (Performansı artırmak için ek model)
+*Lojistik Regresyon  
+*Confusion Matrix 
+*ROC Eğrisi & AUC Skoru  
+*Boosting (GBM) 
 
 3. Gereksinimler ve Kurulum
 library(readxl)
