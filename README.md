@@ -1,4 +1,7 @@
+ÖNEMLİ NOT:Bu çalışma, etki faktörü olarak gerçekleştirilmiştir. Bu, başlangıç değerlerinin (referans değerlerinin) etkisinin sıfır olduğu anlamına gelmektedir.
+
 Yaş ve Deneyim ile İşten Ayrılma Tahmini
+
 
 1. Projenin Amacı
 
@@ -9,11 +12,12 @@ Bu proje, çalışanların yaş, deneyim ve diğer çeşitli faktörlere dayalı
 *Bu model, şirketlerin personel devir hızını anlaması ve tahmin etmesi için kullanılabilir.
 *Lojistik Büyüleme Modeli ile yaşa göre deneyim tahmini.
 
+
 2. Kullanılan Yöntemler
 Bu projede şu makine öğrenmesi ve istatistiksel yöntemler kullanılmıştır:
-*Lojistik Regresyon ✨  (Olasılık bazlı tahmin yapar)
-*Confusion Matrix  📊 (Modelin doğruluk oranını değerlendirir)
-*ROC Eğrisi & AUC Skoru  🔢 (Modelin çalışma performansını ölçer)
+*Lojistik Regresyon  (Olasılık bazlı tahmin yapar)
+*Confusion Matrix (Modelin doğruluk oranını değerlendirir)
+*ROC Eğrisi & AUC Skoru  (Modelin çalışma performansını ölçer)
 *Boosting (GBM) ⚡ (Performansı artırmak için ek model)
 
 3. Gereksinimler ve Kurulum
