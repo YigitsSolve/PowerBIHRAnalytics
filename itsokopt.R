@@ -1,3 +1,4 @@
+# İçin İşe Alım Optimum noktaya dayalı beklenen(Çalışma Yılı) değer çalışması
 library(minpack.lm)  # nlsLM için
 library(ggplot2)
 
