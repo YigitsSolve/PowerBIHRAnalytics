@@ -4,12 +4,12 @@ library(dplyr)
 # Excel dosyasını yükleme
 Employee <- read_excel("C:/Users/Safa/Desktop/Employee.xlsx")
 
-# Gerekli Paketleri Yükleyelim (Eğer daha önce yüklenmemişse)
+# Gerekli Paketleri Yükle
 packages <- c("titanic", "dplyr", "ggplot2", "VIM", "naniar", "mice", "caret", "randomForest", "gbm")
 new_packages <- packages[!(packages %in% installed.packages()[,"Package"])]
 if(length(new_packages)) install.packages(new_packages)
 
-# Gerekli Kütüphaneleri Çağırma
+#Kütüphaneler
 library(ggplot2)
 library(VIM)
 library(naniar)
@@ -22,11 +22,11 @@ library(dplyr)
 categorical_columns <- c("Attrition", "BusinessTravel", "Department", "EducationField", "Gender", "JobRole", "MaritalStatus", "OverTime")
 Employee[categorical_columns] <- lapply(Employee[categorical_columns], factor)
 
-# Tek değere sahip sütunları tespit etme ve çıkarma
+# Tek değere sahip sütunları tespit et ve çıkar
 single_value_columns <- sapply(Employee, function(x) length(unique(x)) == 1)
 Employee <- Employee[, !single_value_columns]
 Employee
-# Veri çerçevesinden belirli sütunları seçme
+# Veri çerçevesinden belirli sütunları seç
 df_selected <- select(Employee,Age, Attrition, BusinessTravel, DistanceFromHome,
                       EnvironmentSatisfaction,
                       Gender,JobInvolvement,JobSatisfaction, MaritalStatus,
@@ -34,15 +34,15 @@ df_selected <- select(Employee,Age, Attrition, BusinessTravel, DistanceFromHome,
                       TotalWorkingYears, TrainingTimesLastYear, WorkLifeBalance, YearsAtCompany,
                       YearsInCurrentRole, YearsSinceLastPromotion, YearsWithCurrManager)
 
-# Logistik regresyon modeli kurulumu
+# Logistik regresyon modeli
 model <- glm(Attrition ~ ., data = df_selected, family = binomial())
 
-# Model özetini görüntüleme
+# Model özeti
 summary(model)
 
 
 library(pROC)
-# Tahmin edilen olasılıklar
+# Tahmin edilen olasılıklar/ katsayılar
 predicted_probabilities <- predict(model, type = "response")
 
 # Gerçek değerler - Attrition sütununu faktör olarak belirlemek gerekebilir
@@ -97,10 +97,10 @@ cat("F1 Score:", f1_score, "\n")
 # Gerekli paketi yükleme (eğer yüklü değilse)
 #install.packages("gtsummary")
 
-# Paketi çağır
+# Kütühane
 library(gtsummary)
 
-# Modeli tekrar oluştur
+# Model tekrarı
 model <- glm(Attrition ~ ., data = df_selected, family = binomial())
 
 # (Intercept) dahil etmek için `intercept = TRUE` ekle
@@ -111,17 +111,17 @@ tbl_regression(model, exponentiate = FALSE, intercept = TRUE)
 
 # Veri setini eğitim ve test setlerine ayır
 set.seed(123)  # Reproducibility için seed ayarı
-split <- createDataPartition(df_selected$Attrition, p = 0.7, list = FALSE)
+split <- createDataPartition(df_selected$Attrition, p = 0.66, list = FALSE)
 training_set <- df_selected[split, ]
 test_set <- df_selected[-split, ]
 
-# Eğitim seti üzerinde logistik regresyon modeli kurulumu
+# Eğitim seti üzerinde logistik regresyon modeli
 model <- glm(Attrition ~ ., data = training_set, family = binomial())
 
-# Model özetini görüntüleme
+# Model özeti
 summary(model)
 
-# Test seti üzerinde tahminlerin yapılması
+# Test seti üzerinde tahminler
 predicted_probabilities <- predict(model, newdata = test_set, type = "response")
 actual_values <- factor(test_set$Attrition, levels = c("No", "Yes"))
 
@@ -157,10 +157,10 @@ training_set <- training_set %>%
 test_set <- test_set %>%
   mutate(Attrition = ifelse(Attrition == "Yes", 1, 0))
 
-# Set the seed for reproducibility
+#Seed
 set.seed(123)
 
-# Boosting modeli kurulumu
+# Boosting modeli
 boosting_model <- gbm(Attrition ~ ., data=training_set, distribution="bernoulli",
                       n.trees=50, interaction.depth=1, shrinkage=0.01,
                       cv.folds=5, n.minobsinnode = 10)
