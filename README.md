@@ -47,7 +47,7 @@ Logistik Model Fonksiyonu
 
 Logistik büyüme modeli aşağıdaki matematiksel formül
 
-Y= L/1+e^(-k(X-x0)
+Y= L/1+e^(-k(X-x0))
 
 L: Asimptotik maksimum değer (taşıma kapasitesi),
 
