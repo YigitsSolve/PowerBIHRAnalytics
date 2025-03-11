@@ -1,4 +1,4 @@
-ÖNEMLİ NOT:Bu çalışma, etki faktörü olarak gerçekleştirilmiştir. Bu, başlangıç değerlerinin (referans değerlerinin) etkisinin sıfır olduğu anlamına gelmektedir.
+ÖNEMLİ NOT:Bu çalışma, etki faktörü olarak gerçekleştirilmiştir. Bu, başlangıç değerlerinin (referans değerlerinin) etkisinin sıfır olduğu anlamına gelmektedir. Daha Anlaşaşılabilir olması için [Coefficients.jpeg](https://github.com/YigitsSolve/PowerBIHRAnalytics/blob/main/Coefficients.jpeg) inceleyebilirsin.
 
 Yaş ve Deneyim ile İşten Ayrılma Tahmini
 
